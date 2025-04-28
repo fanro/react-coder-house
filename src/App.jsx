@@ -1,12 +1,12 @@
-import './App.css';
-import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
 
-function App() {
+const App = () => {
   return (
-    <ChakraProvider value={defaultSystem}>
-      <h1 style={{ backgroundColor: 'red' }}>Hello World!</h1>
+    <ChakraProvider>
+      <h1>Hello World!</h1>
     </ChakraProvider>
   );
-}
+};
 
 export default App;
