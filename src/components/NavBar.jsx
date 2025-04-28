@@ -19,7 +19,7 @@ const NavBar = () => {
       height='5%'
       border='1px solid #2e2e2e'
     >
-      <Text className='test'>kwik E mart's Store</Text>
+      <Text className='test'>kwik E mart's Official Store</Text>
       <Menu>
         <MenuButton as={Button}>Actions</MenuButton>
         <MenuList>
