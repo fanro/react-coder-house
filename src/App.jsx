@@ -1,10 +1,15 @@
 import React from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
 
 const App = () => {
   return (
     <ChakraProvider>
-      <h1>Hello World!</h1>
+      <Box height='100vh'>
+        <NavBar />
+        <ItemListContainer greeting='Bienvenidos a mi Tienda!' />
+      </Box>
     </ChakraProvider>
   );
 };
