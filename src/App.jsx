@@ -8,7 +8,7 @@ const App = () => {
     <ChakraProvider>
       <Box height='100vh'>
         <NavBar />
-        <ItemListContainer greeting='Bienvenidos a mi Tienda!' />
+        <ItemListContainer greeting='Bienvenidos a la tienda oficial' />
       </Box>
     </ChakraProvider>
   );

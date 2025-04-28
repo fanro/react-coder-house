@@ -1,15 +1,11 @@
 import { Flex } from '@chakra-ui/react';
+import logo from '../assets/img/logo.jpg';
 
 const ItemListContainer = ({ greeting }) => {
   return (
-    <Flex
-      fontSize='2rem'
-      height='95%'
-      width='100vw'
-      alignItems='center'
-      justifyContent='center'
-    >
-      {greeting}
+    <Flex direction='column' alignItems='center' justifyContent='center'>
+      <h1>{greeting}</h1>
+      <img src={logo} className='logo react' alt='React logo' />
     </Flex>
   );
 };
