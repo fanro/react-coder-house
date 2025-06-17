@@ -34,9 +34,9 @@ const NavBar = () => {
       <Text className='test' onClick={() => navigate('/')} cursor={'pointer'}>
         kwik E mart's Official Store
       </Text>
-      <Menu height={'200px'}>
+      <Menu>
         <MenuButton as={Button}>Categorias</MenuButton>
-        <MenuList>
+        <MenuList maxHeight='250px' overflowY='auto'>
           {categories.map((item) => {
             return (
               <MenuItem
@@ -47,7 +47,6 @@ const NavBar = () => {
               </MenuItem>
             );
           })}
-          <MenuItem>Jordans</MenuItem>
         </MenuList>
       </Menu>
       <CartWidget />
