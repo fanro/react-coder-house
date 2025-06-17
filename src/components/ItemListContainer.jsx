@@ -20,7 +20,7 @@ const ItemCard = ({ image, title, description, price, discount, id }) => {
         <Heading size={'md'} marginBottom={2}>
           {title}
         </Heading>
-        <Text noOfLines={2} mb={4} color='gray.400'>
+        <Text noOfLines={2} mb={4}>
           {description}
         </Text>
         <Text fontSize={'18px'}>${price}</Text>
