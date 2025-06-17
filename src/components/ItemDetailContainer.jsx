@@ -1,54 +1,3 @@
-// import { Flex, Image, Text, Button, Heading } from "@chakra-ui/react";
-
-// const ItemDetailContainer = ({ product }) => {
-//   console.log(product);
-//   return (
-//     <Flex>
-//       {product.images ? (
-//         <Image
-//           src={product.images[0]}
-//           width={"20%"}
-//           height={"300px"}
-//           objectFit={"content"}
-//         />
-//       ) : null}
-//       <Flex flexDir={'column'}>
-//       <Heading>{product.title}</Heading>
-//       <Text fontSize={'1rem'}>{product.description}</Text>
-//       <Text>{product.price}</Text>
-//       <Button>Agregar producto</Button>
-//       </Flex>
-//     </Flex>
-//   );
-// };
-
-// export default ItemDetailContainer;
-// import { Flex, Image, Text, Button, Heading } from "@chakra-ui/react";
-
-// const ItemDetailContainer = ({ product }) => {
-//   console.log(product);
-//   return (
-//     <Flex>
-//       {product.images ? (
-//         <Image
-//           src={product.images[0]}
-//           width={"20%"}
-//           height={"300px"}
-//           objectFit={"content"}
-//         />
-//       ) : null}
-//       <Flex flexDir={'column'}>
-//       <Heading>{product.title}</Heading>
-//       <Text fontSize={'1rem'}>{product.description}</Text>
-//       <Text>{product.price}</Text>
-//       <Button>Agregar producto</Button>
-//       </Flex>
-//     </Flex>
-//   );
-// };
-
-// export default ItemDetailContainer;
-
 import {
   Box,
   Container,
@@ -64,13 +13,13 @@ import {
   useColorModeValue,
   List,
   ListItem,
-} from "@chakra-ui/react";
-import { MdLocalShipping } from "react-icons/md";
+} from '@chakra-ui/react';
+import { MdLocalShipping } from 'react-icons/md';
 
 const ItemDetailContainer = ({ product }) => {
   console.log(product);
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={'7xl'}>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
@@ -79,29 +28,29 @@ const ItemDetailContainer = ({ product }) => {
         <Flex>
           {product.images ? (
             <Image
-              rounded={"md"}
-              alt={"product image"}
+              rounded={'md'}
+              alt={'product image'}
               src={product.images[0]}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={{ base: "100%", sm: "400px", lg: "500px" }}
+              fit={'cover'}
+              align={'center'}
+              w={'100%'}
+              h={{ base: '100%', sm: '400px', lg: '500px' }}
             />
           ) : null}
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
-          <Box as={"header"}>
+          <Box as={'header'}>
             <Heading
               lineHeight={1.1}
               fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
+              fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}
             >
               {product.title}
             </Heading>
             <Text
-              color={useColorModeValue("gray.900", "gray.400")}
+              color={useColorModeValue('gray.900', 'gray.400')}
               fontWeight={300}
-              fontSize={"2xl"}
+              fontSize={'2xl'}
             >
               ${product.price}
             </Text>
@@ -109,101 +58,101 @@ const ItemDetailContainer = ({ product }) => {
 
           <Stack
             spacing={{ base: 4, sm: 6 }}
-            direction={"column"}
+            direction={'column'}
             divider={
               <StackDivider
-                borderColor={useColorModeValue("gray.200", "gray.600")}
+                borderColor={useColorModeValue('gray.200', 'gray.600')}
               />
             }
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
               <Text
-                color={useColorModeValue("gray.500", "gray.400")}
-                fontSize={"2xl"}
-                fontWeight={"300"}
+                color={useColorModeValue('gray.500', 'gray.400')}
+                fontSize={'2xl'}
+                fontWeight={'300'}
               >
                 {product.description}
               </Text>
             </VStack>
             <Box>
               <Text
-                fontSize={{ base: "16px", lg: "18px" }}
-                color={useColorModeValue("yellow.500", "yellow.300")}
-                fontWeight={"500"}
-                textTransform={"uppercase"}
-                mb={"4"}
+                fontSize={{ base: '16px', lg: '18px' }}
+                color={useColorModeValue('yellow.500', 'yellow.300')}
+                fontWeight={'500'}
+                textTransform={'uppercase'}
+                mb={'4'}
               >
                 Product Details
               </Text>
 
               <List spacing={2}>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text as={'span'} fontWeight={'bold'}>
                     Between lugs:
-                  </Text>{" "}
+                  </Text>{' '}
                   20 mm
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text as={'span'} fontWeight={'bold'}>
                     Bracelet:
-                  </Text>{" "}
+                  </Text>{' '}
                   leather strap
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text as={'span'} fontWeight={'bold'}>
                     Case:
-                  </Text>{" "}
+                  </Text>{' '}
                   Steel
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text as={'span'} fontWeight={'bold'}>
                     Case diameter:
-                  </Text>{" "}
+                  </Text>{' '}
                   42 mm
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text as={'span'} fontWeight={'bold'}>
                     Dial color:
-                  </Text>{" "}
+                  </Text>{' '}
                   Black
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text as={'span'} fontWeight={'bold'}>
                     Crystal:
-                  </Text>{" "}
+                  </Text>{' '}
                   Domed, scratch‑resistant sapphire crystal with anti‑reflective
                   treatment inside
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Water resistance:
-                  </Text>{" "}
-                  5 bar (50 metres / 167 feet){" "}
+                  <Text as={'span'} fontWeight={'bold'}>
+                    Warranty:
+                  </Text>{' '}
+                  {product.warrantyInformation}
                 </ListItem>
               </List>
             </Box>
           </Stack>
 
           <Button
-            rounded={"none"}
-            w={"full"}
+            rounded={'none'}
+            w={'full'}
             mt={8}
-            size={"lg"}
-            py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
-            textTransform={"uppercase"}
+            size={'lg'}
+            py={'7'}
+            bg={useColorModeValue('gray.900', 'gray.50')}
+            color={useColorModeValue('white', 'gray.900')}
+            textTransform={'uppercase'}
             _hover={{
-              transform: "translateY(2px)",
-              boxShadow: "lg",
+              transform: 'translateY(2px)',
+              boxShadow: 'lg',
             }}
           >
             Add to cart
           </Button>
 
-          <Stack direction="row" alignItems="center" justifyContent={"center"}>
+          <Stack direction='row' alignItems='center' justifyContent={'center'}>
             <MdLocalShipping />
-            <Text>2-3 business days delivery</Text>
+            <Text>{product.shippingInformation}</Text>
           </Stack>
         </Stack>
       </SimpleGrid>

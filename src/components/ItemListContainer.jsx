@@ -1,7 +1,5 @@
 import logo from '../assets/img/logo.jpg';
-import { useEffect, useState } from 'react';
 import { Box, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
-import { getAllProducts } from '../services/products.service';
 import { useNavigate } from 'react-router';
 
 const ItemCard = ({ image, title, description, price, discount, id }) => {
@@ -33,15 +31,7 @@ const ItemCard = ({ image, title, description, price, discount, id }) => {
   );
 };
 
-const ItemListContainer = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    getAllProducts().then((res) => {
-      setProducts(res.data.products);
-    });
-  }, []);
-
+const ItemListContainer = ({ products }) => {
   return (
     <>
       <Flex direction='column' alignItems='center' justifyContent='center'>
