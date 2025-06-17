@@ -8,8 +8,10 @@ import {
   MenuItem,
 } from '@chakra-ui/react';
 import CartWidget from './CartWidget';
+import { useNavigate } from 'react-router';
 
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <Flex
       alignItems='center'
@@ -19,7 +21,10 @@ const NavBar = () => {
       height='5%'
       border='1px solid #2e2e2e'
     >
-      <Text className='test'>kwik E mart's Official Store</Text>
+      <Text className='test' onClick={() => navigate('/')} cursor={'pointer'}>
+        kwik E mart's Official Store
+      </Text>
+
       <Menu>
         <MenuButton as={Button}>Actions</MenuButton>
         <MenuList>

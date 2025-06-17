@@ -2,11 +2,11 @@ import logo from '../assets/img/logo.jpg';
 import { useEffect, useState } from 'react';
 import { Box, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import { getAllProducts } from '../services/products.service';
+import { useNavigate } from 'react-router';
 
-const ItemCard = ({ image, title, description, price, discount }) => {
-  console.log(discount);
-
+const ItemCard = ({ image, title, description, price, discount, id }) => {
   const priceAfterDiscount = (price - (price * discount) / 100).toFixed(2);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -16,6 +16,7 @@ const ItemCard = ({ image, title, description, price, discount }) => {
       color={'black'}
       transition='transform 0.3s, box-shadow 0.3s'
       _hover={{ transform: 'translateY(-5px)', boxShadow: 'lg' }}
+      onClick={() => navigate(`/item/${id}`)}
     >
       <Image alt={title} src={image} objectFit={'contain'} width={'100%'} />
       <Box padding={4}>
@@ -62,6 +63,7 @@ const ItemListContainer = () => {
             return (
               <ItemCard
                 key={product.id}
+                id={product.id}
                 image={product.thumbnail}
                 title={product.title}
                 description={product.description}
