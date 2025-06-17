@@ -1,5 +1,4 @@
-import logo from '../assets/img/logo.jpg';
-import { Box, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
 const ItemCard = ({ image, title, description, price, discount, id }) => {
@@ -33,38 +32,23 @@ const ItemCard = ({ image, title, description, price, discount, id }) => {
 
 const ItemListContainer = ({ products }) => {
   return (
-    <>
-      <Flex direction='column' alignItems='center' justifyContent='center'>
-        {/* <h1>{greeting}</h1> */}
-        <img
-          src={logo}
-          style={{ width: '300px', height: '100px' }}
-          alt='logo'
-        />
-        {/* <img src={apu} className='apu' alt='apu' /> */}
-      </Flex>
-      <Box width={'100%'} overflowX={'hidden'} p={4}>
-        <SimpleGrid
-          columns={{ sm: 2, md: 3, lg: 6 }}
-          spacing={4}
-          width={'100%'}
-        >
-          {products.map((product) => {
-            return (
-              <ItemCard
-                key={product.id}
-                id={product.id}
-                image={product.thumbnail}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                discount={product.discountPercentage}
-              />
-            );
-          })}
-        </SimpleGrid>
-      </Box>
-    </>
+    <Box width={'100%'} overflowX={'hidden'} p={4}>
+      <SimpleGrid columns={{ sm: 2, md: 3, lg: 6 }} spacing={4} width={'100%'}>
+        {products.map((product) => {
+          return (
+            <ItemCard
+              key={product.id}
+              id={product.id}
+              image={product.thumbnail}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              discount={product.discountPercentage}
+            />
+          );
+        })}
+      </SimpleGrid>
+    </Box>
   );
 };
 
