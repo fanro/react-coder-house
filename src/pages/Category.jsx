@@ -10,7 +10,6 @@ const Category = () => {
   useEffect(() => {
     getProductsByCategory(id)
       .then((res) => {
-        console.log(res.data.products);
         setProducts(res.data.products);
       })
       .catch((error) => {
