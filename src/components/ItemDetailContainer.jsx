@@ -17,7 +17,6 @@ import {
 import { MdLocalShipping } from 'react-icons/md';
 
 const ItemDetailContainer = ({ product }) => {
-  console.log(product);
   return (
     <Container maxW={'7xl'}>
       <SimpleGrid

@@ -1,7 +1,8 @@
-import { useParams } from "react-router";
-import ItemDetailContainer from "../components/ItemDetailContainer";
-import { useEffect, useState } from "react";
-import { getProductById } from "../services/products.service";
+import { useParams } from 'react-router';
+import ItemDetailContainer from '../components/ItemDetailContainer';
+import { useEffect, useState } from 'react';
+import { getProductById } from '../services/products.service';
+import Loading from '../components/Loading';
 
 const Item = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Item = () => {
       .finally(() => setLoading(false));
   }, [id]);
 
-  return loading ? <>Loading...</> : <ItemDetailContainer product={product} />;
+  return loading ? <Loading /> : <ItemDetailContainer product={product} />;
 };
 
 export default Item;
