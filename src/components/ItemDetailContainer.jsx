@@ -17,6 +17,11 @@ import {
 import { MdLocalShipping } from 'react-icons/md';
 
 const ItemDetailContainer = ({ product }) => {
+  const priceAfterDiscount = (
+    product.price -
+    (product.price * product.discountPercentage) / 100
+  ).toFixed(2);
+
   return (
     <Container maxW={'7xl'}>
       <SimpleGrid
@@ -50,8 +55,16 @@ const ItemDetailContainer = ({ product }) => {
               color={useColorModeValue('gray.900', 'gray.400')}
               fontWeight={300}
               fontSize={'2xl'}
+              as='s'
             >
               ${product.price}
+            </Text>
+            <Text
+              color={useColorModeValue('red.900', 'red.400')}
+              fontWeight={400}
+              fontSize={'2xl'}
+            >
+              ${priceAfterDiscount}
             </Text>
           </Box>
 

@@ -1,4 +1,11 @@
-import { Box, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
 const ItemCard = ({ image, title, description, price, discount, id }) => {
@@ -23,8 +30,12 @@ const ItemCard = ({ image, title, description, price, discount, id }) => {
         <Text noOfLines={2} mb={4}>
           {description}
         </Text>
-        <Text fontSize={'18px'}>${price}</Text>
-        <Text fontSize={'18px'}>${priceAfterDiscount}</Text>
+        <Text fontSize={'18px'} as='s'>
+          ${price}
+        </Text>
+        <Text fontSize={'18px'} color={useColorModeValue('red.900', 'red.400')}>
+          ${priceAfterDiscount}
+        </Text>
       </Box>
     </Box>
   );
