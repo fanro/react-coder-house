@@ -53,6 +53,10 @@ export const CartProvider = ({ children }) => {
     return totalPrice;
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -63,6 +67,7 @@ export const CartProvider = ({ children }) => {
         checkIfProductExists,
         getTotalPrice,
         deleteProductFromCart,
+        clearCart,
       }}
     >
       {children}

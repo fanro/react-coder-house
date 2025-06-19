@@ -17,7 +17,6 @@ import { MdLocalShipping } from 'react-icons/md';
 import ItemCount from './ItemCount';
 
 const ItemDetailContainer = ({ product }) => {
-  console.log('Product details:', product);
   const priceAfterDiscount = (
     product.price -
     (product.price * product.discountPercentage) / 100
@@ -79,11 +78,7 @@ const ItemDetailContainer = ({ product }) => {
             }
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
-              <Text
-                // color={useColorModeValue('gray.500', 'gray.400')}
-                fontSize={'2xl'}
-                fontWeight={'300'}
-              >
+              <Text fontSize={'2xl'} fontWeight={'300'}>
                 {product.description}
               </Text>
             </VStack>

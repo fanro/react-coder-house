@@ -35,8 +35,6 @@ const Cart = () => {
     deleteProductFromCart(itemId);
   };
 
-  console.log('Cart State:', cartState);
-
   return (
     <Box p={6} maxW='800px' mx='auto' h={'90vh'}>
       <Heading as='h2' size='lg' mb={6} textAlign='center'>

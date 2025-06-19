@@ -1,22 +1,27 @@
-import { Button, Container, Input, useToast } from '@chakra-ui/react';
+import { Box, Button, Container, Input, useToast } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../services/config/firebase';
+import { useNavigate } from 'react-router';
+import Loading from '../components/Loading';
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     fullName: '',
     email: '',
     phoneNumber: '',
   });
 
-  const { cart, getTotalPrice } = useContext(CartContext);
+  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
 
   const toast = useToast();
 
   const handleSumbit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const data = {
       buyer: formState,
@@ -25,55 +30,75 @@ const Checkout = () => {
     };
     const cartCollection = collection(db, 'cart');
     addDoc(cartCollection, data)
-      .then(({ id }) =>
+      .then(({ id }) => {
         toast({
           title: 'Compra finalizada',
-          description: `Por cualquier reclamo indicar el numero de orden: ${id}`,
+          description: `Gracias por tu compra ${formState.fullName}. Por cualquier reclamo indicar el numero de orden: ${id}`,
           status: 'success',
           duration: 3000,
           isClosable: true,
-        })
-      )
-      .catch((e) => console.error(e));
+        });
+        clearCart();
+        // reset form state
+        setFormState({
+          fullName: '',
+          email: '',
+          phoneNumber: '',
+        });
+      })
+      .catch((e) => console.error(e))
+      .finally(() => setLoading(false));
   };
+
   return (
     <Container>
-      <form onSubmit={(e) => handleSumbit(e)}>
-        <Input
-          type='text'
-          placeholder='Nombre completo'
-          isRequired
-          onChange={(e) =>
-            setFormState({
-              ...formState,
-              fullName: e.target.value,
-            })
-          }
-        />
-        <Input
-          type='text'
-          placeholder='Correo electronico'
-          isRequired
-          onChange={(e) =>
-            setFormState({
-              ...formState,
-              email: e.target.value,
-            })
-          }
-        />
-        <Input
-          type='text'
-          placeholder='Numero de contacto'
-          isRequired
-          onChange={(e) =>
-            setFormState({
-              ...formState,
-              phoneNumber: e.target.value,
-            })
-          }
-        />
-        <Button type='submit'>Comprar</Button>
-      </form>
+      {loading && <Loading />}
+
+      {!loading && (
+        <form onSubmit={(e) => handleSumbit(e)}>
+          <Input
+            type='text'
+            placeholder='Nombre completo'
+            isRequired
+            value={formState.fullName}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                fullName: e.target.value,
+              })
+            }
+          />
+          <Input
+            type='text'
+            placeholder='Correo electronico'
+            isRequired
+            value={formState.email}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                email: e.target.value,
+              })
+            }
+          />
+          <Input
+            type='text'
+            placeholder='Numero de contacto'
+            isRequired
+            value={formState.phoneNumber}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                phoneNumber: e.target.value,
+              })
+            }
+          />
+
+          <Box gap={2} display='flex' flexDirection='row'>
+            <Button onClick={() => navigate(-1)}>Volver</Button>
+            <Button type='submit'>Comprar</Button>
+          </Box>
+        </form>
+      )}
     </Container>
   );
 };
