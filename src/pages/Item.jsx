@@ -1,8 +1,9 @@
 import { useParams } from 'react-router';
 import ItemDetailContainer from '../components/ItemDetailContainer';
 import { useEffect, useState } from 'react';
-import { getProductById } from '../services/products.service';
 import Loading from '../components/Loading';
+import { db } from '../services/config/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Item = () => {
   const { id } = useParams();
@@ -10,9 +11,12 @@ const Item = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProductById(id)
-      .then((res) => setProduct(res.data))
-      .catch((error) => console.error(error))
+    const productDoc = doc(db, 'products', id);
+    getDoc(productDoc)
+      .then((snapshot) => {
+        setProduct({ id: snapshot.id, ...snapshot.data() });
+      })
+      .catch((e) => console.error(e))
       .finally(() => setLoading(false));
   }, [id]);
 

@@ -17,6 +17,7 @@ import { MdLocalShipping } from 'react-icons/md';
 import ItemCount from './ItemCount';
 
 const ItemDetailContainer = ({ product }) => {
+  console.log('Product details:', product);
   const priceAfterDiscount = (
     product.price -
     (product.price * product.discountPercentage) / 100
@@ -98,43 +99,6 @@ const ItemDetailContainer = ({ product }) => {
               </Text>
 
               <List spacing={2}>
-                <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                    Between lugs:
-                  </Text>{' '}
-                  20 mm
-                </ListItem>
-                <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                    Bracelet:
-                  </Text>{' '}
-                  leather strap
-                </ListItem>
-                <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                    Case:
-                  </Text>{' '}
-                  Steel
-                </ListItem>
-                <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                    Case diameter:
-                  </Text>{' '}
-                  42 mm
-                </ListItem>
-                <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                    Dial color:
-                  </Text>{' '}
-                  Black
-                </ListItem>
-                <ListItem>
-                  <Text as={'span'} fontWeight={'bold'}>
-                    Crystal:
-                  </Text>{' '}
-                  Domed, scratch‑resistant sapphire crystal with anti‑reflective
-                  treatment inside
-                </ListItem>
                 <ListItem>
                   <Text as={'span'} fontWeight={'bold'}>
                     Warranty:

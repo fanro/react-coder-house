@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout';
 import Item from '../pages/Item';
 import Category from '../pages/Category';
 import NotFound from '../pages/NotFound';
+import AddDoc from '../pages/AddDoc';
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
       {
         path: '/category/:id',
         element: <Category />,
+      },
+      {
+        path: '/add-doc',
+        element: <AddDoc />,
       },
       {
         path: '*',

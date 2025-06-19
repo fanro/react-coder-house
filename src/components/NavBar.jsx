@@ -10,16 +10,25 @@ import {
 import CartWidget from './CartWidget';
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
-import { getAllCategories } from '../services/products.service';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../services/config/firebase';
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getAllCategories()
-      .then((res) => setCategories(res.data))
-      .catch((error) => console.error(error));
+    const categoriesCollection = collection(db, 'categories');
+    getDocs(categoriesCollection)
+      .then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCategories(data);
+      })
+      .catch(() => setError(true));
   }, []);
 
   return (
