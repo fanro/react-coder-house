@@ -1,3 +1,4 @@
+import Error from '../components/Error';
 import ItemListContainer from '../components/ItemListContainer';
 import Loading from '../components/Loading';
 import { useGetFirestoreDocs } from '../hooks/useGetFirestoreDocs';
@@ -7,7 +8,7 @@ const Home = () => {
 
   if (loading) return <Loading />;
 
-  if (error) return <>Error</>;
+  if (error) return <Error />;
 
   return <ItemListContainer products={products} />;
 };
