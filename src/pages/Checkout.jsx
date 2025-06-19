@@ -5,6 +5,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../services/config/firebase';
 import { useNavigate } from 'react-router';
 import Loading from '../components/Loading';
+import gracias from '../assets/img/gracias.jpeg';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -33,10 +34,28 @@ const Checkout = () => {
       .then(({ id }) => {
         toast({
           title: 'Compra finalizada',
-          description: `Gracias por tu compra ${formState.fullName}. Por cualquier reclamo indicar el numero de orden: ${id}`,
+          // description: `Gracias por tu compra ${formState.fullName}. Por cualquier reclamo indicar el numero de orden: ${id}`,
           status: 'success',
-          duration: 3000,
+          duration: 6000,
           isClosable: true,
+          render: () => (
+            <Box
+              color='white'
+              p={3}
+              bg='green.500'
+              borderRadius='md'
+              display='flex'
+              alignItems='center'
+              gap={3}
+            >
+              <img
+                src={gracias}
+                alt='Success'
+                style={{ width: '200px', height: '200px' }}
+              />
+              {`Gracias por tu compra ${formState.fullName}. Por cualquier reclamo indicar el numero de orden: ${id}`}
+            </Box>
+          ),
         });
         clearCart();
         // reset form state
