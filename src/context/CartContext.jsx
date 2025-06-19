@@ -37,12 +37,20 @@ export const CartProvider = ({ children }) => {
     return cart.some((item) => item.id === product.id);
   };
 
-  const deleteProductFromCart = (product) => {
-    return prevCart.filter((item) => item.id !== product.id);
+  const deleteProductFromCart = (itemId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
 
   const getTotalCount = () => {
-    return cart.reduce((total, item) => total + item.quantity, 0);
+    return cart.reduce((total, item) => Number(total) + item.quantity, 0);
+  };
+
+  const getTotalPrice = () => {
+    const totalPrice = cart.reduce(
+      (total, item) => total + Number(item.price) * item.quantity,
+      0
+    );
+    return totalPrice;
   };
 
   return (
@@ -53,6 +61,8 @@ export const CartProvider = ({ children }) => {
         removeProductFromCart,
         getTotalCount,
         checkIfProductExists,
+        getTotalPrice,
+        deleteProductFromCart,
       }}
     >
       {children}
